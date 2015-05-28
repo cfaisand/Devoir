@@ -15,6 +15,7 @@ public class TerrainConstructible extends Terrain{
     private final int MAXHABITATION = 5;
     private int nbHabitations;
     
+
     /**
      * Constructeur vide appelant le constructeur de la classe Terrain
      */
@@ -22,6 +23,7 @@ public class TerrainConstructible extends Terrain{
 	super();
     }// fin constructeur
     
+
     /**
      * Initialise un nouvel objet de type TerrainConstructible de nom "nom", de superficie s et contenant les habitations de la liste listeHab.
      */
@@ -37,6 +39,7 @@ public class TerrainConstructible extends Terrain{
 	
     }// fin constructeur
     
+
     /**
      * Initialise interactivement le TerrainConstructible courant
      */
@@ -53,8 +56,8 @@ public class TerrainConstructible extends Terrain{
 		
 	    case 2 : Maison m = new Maison();
 		m.init();
-					this.listeHabitations.add(m);
-					
+		this.listeHabitations.add(m);
+		
 	    case 3 : Immeuble i = new Immeuble();
 		i.init();
 		this.listeHabitations.add(i);
@@ -64,8 +67,9 @@ public class TerrainConstructible extends Terrain{
 	    j = Lire.jint("1 = Habitation, 2 = Maison, 3 = Immeuble et 4 = Sortir !");
 	    
 	}
- 		
+ 	
     }// fin methode init
+
     
     /**
      * Définit le nombre d'habitations du terrain courant à la valeur passée en paramètre
@@ -78,20 +82,22 @@ public class TerrainConstructible extends Terrain{
 	}
     }// fin methode setNbHabitation
     
+
     /**
      * Construit une Habitation sur le TerrainConstructible courant
      */
-     public void construireHabitation(Habitation h) throws Exception{
+    public void construireHabitation(Habitation h) throws Exception{
 	if (this.nbHabitations == 5) throw new Exception("Nombre maximum d'habitation atteint ! On ne peut plus en rajouter !");
 	
 	this.listeHabitations.add(h);
 	this.nbHabitations++;
-     }// fin methode construireHabitation
+    }// fin methode construireHabitation
+    
 
     /**
      * Détruit une habitation du TerrainConstructible courant puis la retourne
      */
-     public Habitation detruireHabitation(Habitation h) throws Exception{
+    public Habitation detruireHabitation(Habitation h) throws Exception{
 	
 	for(int i=0; i<nbHabitations; i++){
 	    
@@ -103,92 +109,109 @@ public class TerrainConstructible extends Terrain{
 	}
 	throw new Exception("L'habitation n'est pas sur le terrain !");
 	
-     }// fin methode detruirehabitation
+    }// fin methode detruireHabitation
     
-	public String toString(){
-	    
-	    String s = new String();
-		for(int i=0; i<nbHabitations; i++){
-		    s+= listeHabitations.get(i).toString() +"\n";
-		}
-		return super.toString() + s;
-	}
-    
-    public void chargerTerrain(String nomFichier) throws IOException{
-		Reader fln;
-		BufferedReader bln;
 
-		try{
-	   	 fln = new FileReader(nomFichier);
-	   	 bln = new BufferedReader(fln);
-	   	 String ligne = bln.readLine();
-	   	 int a=0;
+    /**
+     * Retoure la chaine de caractères décrivant le TerrainConstructible courant
+     */
+    public String toString(){
+	
+	String s = new String();
+	for(int i=0; i<nbHabitations; i++){
+	    s+= listeHabitations.get(i).toString() +"\n";
+	}
+	return super.toString() + s;
+    }// fin methode toString()
+    
+
+    /**
+     * Charge un TerrainConstructible depuis un fichier texte passé en paramètre
+     */
+    public void chargerTerrain(String nomFichier) throws IOException{
+	Reader fln;
+	BufferedReader bln;
+	
+	try{
+	    fln = new FileReader(nomFichier);
+	    bln = new BufferedReader(fln);
+	    String ligne = bln.readLine();
+	    int a=0;
 	    
 	  	  while(ligne != null)
 			{
 		    
-		  	  StringTokenizer st = new StringTokenizer(ligne,";:");
-				if(a==0 ){
-				    this.setNomTerrain(ligne);
-				    a++;
-				}
-				if(a==1 ){
-				    this.setSuperficieTerrain(Integer.parseInt(ligne));
-				}
-				
-				if(st.countTokens()==4){
-				    String type = st.nextToken();
-				    if(type.equals("Maison")){
-					String adresse = st.nextToken();
-					String nb = st.nextToken();
-					int nbpiece = Integer.parseInt(nb);
-					String typechauffage = st.nextToken();
-					try {
-					    this.construireHabitation(new Maison(adresse, nbpiece, typechauffage));
-					}
-					catch(Exception e){
-					    System.out.println(e);
-					}
-					
-				    }
-					if(type.equals("Immeuble")){
-					    String adresse = st.nextToken();
-					    String nba = st.nextToken();
-					    int nbApps = Integer.parseInt(nba);
-					    String nbe = st.nextToken();
-					    int nbEtages = Integer.parseInt(nbe);
-					    try {
-						this.construireHabitation(new Immeuble(adresse, nbApps, nbEtages));
-					    }
-					    catch(Exception e){
-							System.out.println(e);
-					    }
-					}
-					
-					
-				}
-				if(st.countTokens() == 2){
-				    String adresse = st.nextToken();
-				    
-				    try {
-					this.construireHabitation(new Habitation(adresse));
-				    }
-					catch(Exception e){
-					    System.out.println(e);
-					}				    
-				}				
-				bln.readLine();				
-		}	    
+		    StringTokenizer st = new StringTokenizer(ligne,";:");
+		    if(a==0 ){
+			this.setNomTerrain(ligne);
+			a++;
+		    }
+		    if(a==1 ){
+			this.setSuperficieTerrain(Integer.parseInt(ligne));
+		    }
+		    
+		    if(st.countTokens()==4){
+			String type = st.nextToken();
+			if(type.equals("Maison")){
+			    String adresse = st.nextToken();
+			    String nb = st.nextToken();
+			    int nbpiece = Integer.parseInt(nb);
+			    String typechauffage = st.nextToken();
+			    try {
+				this.construireHabitation(new Maison(adresse, nbpiece, typechauffage));
+			    }
+			    catch(Exception e){
+				System.out.println(e);
+			    }
+			    
+			}
+			if(type.equals("Immeuble")){
+			    String adresse = st.nextToken();
+			    String nba = st.nextToken();
+			    int nbApps = Integer.parseInt(nba);
+			    String nbe = st.nextToken();
+			    int nbEtages = Integer.parseInt(nbe);
+			    try {
+				this.construireHabitation(new Immeuble(adresse, nbApps, nbEtages));
+			    }
+			    catch(Exception e){
+				System.out.println(e);
+			    }
+			}
+			
+			
+		    }
+		    if(st.countTokens() == 2){
+			String adresse = st.nextToken();
+			
+			try {
+			    this.construireHabitation(new Habitation(adresse));
+			}
+			catch(Exception e){
+			    System.out.println(e);
+			}
+			
+		    }
+		    
+		    bln.readLine();
+		    
+		}
+	    
 	    bln.close();
 	    fln.close();
-	}		
-		catch(IOException e){
-			System.out.println(e);
-			bln = null;
-			fln = null;
-		}
-    }
+	}
+	catch(IOException e){
+	    System.out.println(e);
+	    bln = null;
+	    fln = null;
+	    
+	}
+    }// fin methode chargerTerrain
     
+
+    /**
+     * Permet de sauvegarder le TerrainConstructible courant dans un fichier passé en paramètre
+     */
     public void sauvegarderTerrain(String nomFichier) throws IOException{
 	Writer fOut;
 	PrintWriter pOut;
@@ -223,8 +246,6 @@ public class TerrainConstructible extends Terrain{
 	    fOut = null;
 	    pOut = null;
 	}
-    }
-
-
+    }// fin methode sauvegarderTerrain
 
 }
