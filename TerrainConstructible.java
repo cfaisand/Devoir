@@ -182,12 +182,19 @@ public class TerrainConstructible extends Terrain{
 				bln.readLine();
 				
 		}
+<<<<<<< HEAD
 	    
 	    bln.close();
 	    fln.close();
 	}
 		catch(Exception e){
 		    System.out.println(e);
+=======
+		catch(IOException e){
+			System.out.println(e);
+			bln = null;
+			fln = null;
+>>>>>>> 9ca0e1b310679639234e1fe4aa9e81db1ca2d055
 		}
     }
     
