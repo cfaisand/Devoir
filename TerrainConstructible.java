@@ -121,7 +121,7 @@ public class TerrainConstructible extends Terrain{
 					String type = st.nextToken();
 					if(type.equals("Maison")){
 						String adresse = st.nextToken();
-						int nb = st.nextToken();
+						String nb = st.nextToken();
 						int nbpiece = Integer.parseInt(nb);
 						String typechauffage = st.nextToken();
 						try {
@@ -132,14 +132,14 @@ public class TerrainConstructible extends Terrain{
 						}
 						
 					}
-					if(type.equals("Immeuble ")){
+					if(type.equals("Immeuble")){
 						String adresse = st.nextToken();
-						int nba = st.nextToken();
+						String nba = st.nextToken();
 						int nbApps = Integer.parseInt(nba);
-						int nbe = st.nextToken();
+						String nbe = st.nextToken();
 						int nbEtages = Integer.parseInt(nbe);
 						try {
-							this.construireHabitation(new Immeuble(adresse, nbApps, nbEtages);
+							this.construireHabitation(new Immeuble(adresse, nbApps, nbEtages));
 						}
 						catch(Exception e){
 							System.out.println(e);
@@ -166,6 +166,10 @@ public class TerrainConstructible extends Terrain{
 
 			bln.close();
 			fln.close();
+		}
+		catch(Exception e){
+			System.out.println(e);
+		}
 	}
 	
         public void sauvegarder(String nomFichier) throws IOException{
