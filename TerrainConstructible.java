@@ -59,13 +59,25 @@ public class TerrainConstructible extends Terrain{
 
 
 
-	public void construitreHabitation(Habitation h) throws Exception{
+	public void construireHabitation(Habitation h) throws Exception{
 		if (this.nbHabitations == 5) throw new Exception("Nombre maximum d'habitation atteint ! On ne peut plus en rajouter !");
 
 		this.listeHabitations.add(h);
 		this.nbHabitations++;
 	}
 
+	public Habitation detruireHabitation(Habitation h) throws Exception{
+
+		for(int i=0; i<nbHabitations; i++){
+			if(listeHabitations[i].equals(h)){
+				this.listeHabitations.remove(i);
+				return h;
+			}
+			i++;
+		}
+		throw new Exception("L'habitation n'est pas sur le terrain !");
+		
+	}
 	
 
 }
