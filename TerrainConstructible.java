@@ -114,20 +114,20 @@ public class TerrainConstructible extends Terrain{
 		return super.toString() + s;
 	}
     
-    public void chargerTerrain(String nomFichier){
-	Reader fln;
-	BufferedReader bln;
+    public void chargerTerrain(String nomFichier) throws IOException{
+		Reader fln;
+		BufferedReader bln;
 
-	try{
-	    fln = new FileReader(nomFichier);
-	    bln = new BufferedReader(fln);
-	    String ligne = bln.readLine();
-	    int a=0;
+		try{
+	   	 fln = new FileReader(nomFichier);
+	   	 bln = new BufferedReader(fln);
+	   	 String ligne = bln.readLine();
+	   	 int a=0;
 	    
-	    while(ligne != null)
-		{
+	  	  while(ligne != null)
+			{
 		    
-		    StringTokenizer st = new StringTokenizer(ligne,";:");
+		  	  StringTokenizer st = new StringTokenizer(ligne,";:");
 				if(a==0 ){
 				    this.setNomTerrain(ligne);
 				    a++;
@@ -175,26 +175,17 @@ public class TerrainConstructible extends Terrain{
 				    }
 					catch(Exception e){
 					    System.out.println(e);
-					}
-				    
-				}
-				
-				bln.readLine();
-				
-		}
-<<<<<<< HEAD
-	    
+					}				    
+				}				
+				bln.readLine();				
+		}	    
 	    bln.close();
 	    fln.close();
-	}
-		catch(Exception e){
-		    System.out.println(e);
-=======
+	}		
 		catch(IOException e){
 			System.out.println(e);
 			bln = null;
 			fln = null;
->>>>>>> 9ca0e1b310679639234e1fe4aa9e81db1ca2d055
 		}
     }
     

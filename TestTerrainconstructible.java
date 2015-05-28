@@ -1,4 +1,6 @@
-public class TestTerrainConstructible {
+import java.io.*;
+
+public class TestTerrainconstructible {
 
 	public static void main(String args[]){
 
@@ -10,12 +12,17 @@ public class TestTerrainConstructible {
 		try {
 			t1.sauvegarderTerrain("terrain.txt");
 		}
-		catch (IOException e){
+		catch(IOException e){
 			System.out.println(e);
 		}
 		
-
-		t2.chargerTerrain("terrain.txt");
+		try{
+			t2.chargerTerrain("terrain.txt");
+		}
+		catch(IOException e){
+			System.out.println(e);
+		}
+		
 
 		System.out.println(t2.toString());
 
