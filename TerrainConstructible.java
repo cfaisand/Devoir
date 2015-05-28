@@ -91,6 +91,79 @@ public class TerrainConstructible extends Terrain{
 		}
 		return super.toString() + s;
 	}
+
+	public void chargerTerrain(String nomFichier){
+		Reader fln;
+		BufferedReader bln;
+
+		try{
+			fln = new FileReader(nomFichier);
+			bln = new BufferedReader(fln);
+			String ligne = bln.readLine();
+			int a=0;
+
+			while(ligne != null)
+			{
+				
+				StringTokenizer st = new StringTokenizer(ligne,";:");
+				if(a==0 ){
+					this.setNomTerrain(ligne);
+					a++;
+				}
+				if(a==1 ){
+					this.setSuperficieTerrain(Integer.parseInt(ligne));
+				}
+				
+				if(st.countTokens()==4){
+					String type = st.nextToken();
+					if(type.equals("Maison")){
+						String adresse = st.nextToken();
+						int nb = st.nextToken();
+						int nbpiece = Integer.parseInt(nb);
+						String typechauffage = st.nextToken();
+						try {
+							this.construireHabitation(new Maison(adresse, nbpiece, typechauffage));
+						}
+						catch(Exception e){
+							System.out.println(e);
+						}
+						
+					}
+					if(type.equals("Immeuble ")){
+						String adresse = st.nextToken();
+						int nba = st.nextToken();
+						int nbApps = Integer.parseInt(nba);
+						int nbe = st.nextToken();
+						int nbEtages = Integer.parseInt(nbe);
+						try {
+							this.construireHabitation(new Immeuble(adresse, nbApps, nbEtages);
+						}
+						catch(Exception e){
+							System.out.println(e);
+						}
+					}
+					
+
+				}
+				if(st.countTokens() == 2){
+					String adresse = st.nextToken();
+					
+					try {
+						this.construireHabitation(new Habitation(adresse));
+					}
+					catch(Exception e){
+						System.out.println(e);
+					}
+					
+				}
+				
+				bln.readLine();
+
+			}
+
+			bln.close();
+			fln.close();
+	}
 	
 
 }
