@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.io.*;
 import java.util.StringTokenizer;
+import java.lang.Float;
 
 
 /**
@@ -144,17 +145,17 @@ public class TerrainConstructible extends Terrain{
 	  	  while(ligne != null)
 			{
 		    
-		    StringTokenizer st = new StringTokenizer(ligne,";:");
+		    StringTokenizer st = new StringTokenizer(ligne,";");
 		    if(a==0 ){
-			this.setNomTerrain(ligne);
-			a++;
+				this.setNomTerrain(ligne);
 		    }
 		    if(a==1 ){
-			this.setSuperficieTerrain(Integer.parseInt(ligne));
+				this.setSuperficieTerrain(Float.parseFloat(ligne));
+
 		    }
 		    
 		    if(st.countTokens()==4){
-			String type = st.nextToken();
+				String type = st.nextToken();
 			if(type.equals("Maison")){
 			    String adresse = st.nextToken();
 			    String nb = st.nextToken();
@@ -195,7 +196,7 @@ public class TerrainConstructible extends Terrain{
 			}
 			
 		    }
-		    
+		    a++;
 		    bln.readLine();
 		    
 		}
