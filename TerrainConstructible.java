@@ -1,4 +1,7 @@
 import java.util.ArrayList;
+import java.io.*;
+import java.util.StringTokenizer;
+
 public class TerrainConstructible extends Terrain{
 
 	private ArrayList<Habitation> listeHabitations = new ArrayList<Habitation> ();
@@ -165,5 +168,42 @@ public class TerrainConstructible extends Terrain{
 			fln.close();
 	}
 	
+        public void sauvegarder(String nomFichier) throws IOException{
+	Writer fOut;
+	PrintWriter pOut;
+	try
+	    {
+		fOut = new FileWriter(nomFichier);
+		pOut = new PrintWriter(fOut);
+		pOut.println(this.getNomTerrain());
+		pOut.println(this.getSuperficie());
+		if(this.nbHabitations!=0){
+		    for(int i=0; i<nbHabitations; i++){
+			if(this.listeHabitations.get(i) instanceof Maison){
+			    Maison m=(Maison)this.listeHabitations.get(i);
+			    pOut.println("Maison;"+m.getAdresse()+";"+m.getnbPieces()+";"+m.gettypeChauffage());
+			}else{
+			    if(this.listeHabitations.get(i) instanceof Immeuble){
+				Immeuble imm=(Immeuble)this.listeHabitations.get(i);
+				pOut.println("Immeuble;"+imm.getAdresse()+";"+imm.getnbApps()+";"+imm.getnbEtages());
+			    }else{
+				Habitation h=this.listeHabitations.get(i);
+				pOut.print("Habitation;"+ h.getAdresse());
+			    }
+			}
+		    }
+		}
+		
+		pOut.close();
+		
+	    }
+	catch(IOException e){
+	    System.out.println(e);
+	    fOut = null;
+	    pOut = null;
+	}
+    }
+
+
 
 }

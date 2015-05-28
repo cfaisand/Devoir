@@ -24,7 +24,7 @@ public class Test{
 	    System.out.println(e);
 	}
 
-	System.out.println(this.toString());
+	System.out.println(t.toString());
 
 
     }
