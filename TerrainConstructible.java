@@ -53,14 +53,17 @@ public class TerrainConstructible extends Terrain{
 	    case 1 : Habitation h = new Habitation();
 		h.init();
 		this.listeHabitations.add(h);
+		break;
 		
 	    case 2 : Maison m = new Maison();
 		m.init();
 		this.listeHabitations.add(m);
+		break;
 		
 	    case 3 : Immeuble i = new Immeuble();
 		i.init();
 		this.listeHabitations.add(i);
+		break;
 	    }
 	    
 	    this.nbHabitations++;
