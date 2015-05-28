@@ -22,6 +22,7 @@ public class TerrainConstructible extends Terrain{
 
 	}
 
+	//initialise interactivement le TerrainConstructible
 	public void init(){
 		this.setNomTerrain(Lire.jString("Donnez le nom du Terrain :"));
 		this.setSuperficieTerrain(Lire.jfloat("Donnez la superficie :"));
@@ -49,6 +50,7 @@ public class TerrainConstructible extends Terrain{
  		
 	}
 
+	//initianlise le nombre d'habitation possible sur le TerrainConstructible (max = 5)
 	public void setNbHabitation(int nb){
 		if (nb <= 5 ){
 			this.nbHabitations = nb;
@@ -58,7 +60,7 @@ public class TerrainConstructible extends Terrain{
 	}
 
 
-
+	//Construit une Habitation sur le TerrainConstructible courant
 	public void construireHabitation(Habitation h) throws Exception{
 		if (this.nbHabitations == 5) throw new Exception("Nombre maximum d'habitation atteint ! On ne peut plus en rajouter !");
 
@@ -66,10 +68,11 @@ public class TerrainConstructible extends Terrain{
 		this.nbHabitations++;
 	}
 
+	// détruit et retourne une habitation du TerrainConstructible courant
 	public Habitation detruireHabitation(Habitation h) throws Exception{
 
 		for(int i=0; i<nbHabitations; i++){
-			if(listeHabitations[i].equals(h)){
+			if(listeHabitations.get(i).equals(h)){
 				this.listeHabitations.remove(i);
 				return h;
 			}
@@ -77,6 +80,15 @@ public class TerrainConstructible extends Terrain{
 		}
 		throw new Exception("L'habitation n'est pas sur le terrain !");
 		
+	}
+
+	public String toString(){
+		
+		String s = new String();
+		for(int i=0; i<nbHabitations; i++){
+			s+= listeHabitations.get(i).toString() +"\n";
+		}
+		return super.toString() + s;
 	}
 	
 

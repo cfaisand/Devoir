@@ -34,4 +34,8 @@ public class Terrain {
 	public void setSuperficieTerrain(float s){
 		this.superficie = s;
 	}
+
+	public String toString(){
+		return "Nom du Terrain : " + nomTerrain + "de superficie : " + superficie;
+	}
 }
