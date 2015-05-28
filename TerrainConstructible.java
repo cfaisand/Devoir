@@ -72,7 +72,8 @@ public class TerrainConstructible extends Terrain{
 	public Habitation detruireHabitation(Habitation h) throws Exception{
 
 		for(int i=0; i<nbHabitations; i++){
-			if(listeHabitations.get(i).equals(h)){
+
+		    if(listeHabitations.get(i).equals(h)){
 				this.listeHabitations.remove(i);
 				return h;
 			}

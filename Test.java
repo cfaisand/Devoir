@@ -6,9 +6,26 @@ public class Test{
 
 	t.init();
 
+	try{
 	t.construireHabitation(new Maison());
+	}catch(Exception e){
+	    System.out.println(e);
+	}
+
+	try{
 	t.construireHabitation(new Maison());
+	}catch(Exception e){
+	    System.out.println(e);
+	}
+
+	try{
 	t.construireHabitation(new Immeuble());
+	}catch(Exception e){
+	    System.out.println(e);
+	}
+
+	System.out.println(this.toString());
+
 
     }
 
