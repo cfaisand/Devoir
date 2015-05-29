@@ -1,3 +1,5 @@
-William
-6.0
-Habitation;12 rueMaison;5 chemin;5;chaudiere
+t1
+12.0
+Habitation;h1
+Maison;m1;5;chaudiere
+Immeuble;i1;6;3
