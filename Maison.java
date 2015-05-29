@@ -44,4 +44,8 @@ public class Maison extends Habitation{
 
     }
 
+    public String toString(){
+	return super.toString() + "\nNombre de pièces : " + this.nbPieces + "\nType de chauffage : " + this.typeChauffage;
+    }
+
 }

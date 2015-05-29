@@ -44,4 +44,8 @@ public class Immeuble extends Habitation{
 
     }
 
+    public String toString(){
+	return super.toString() + "\nNombre d'appartements : " + this.nbApps + "\nNombre d'étages : " + this.nbEtages;
+    }
+
 }
