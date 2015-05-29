@@ -30,7 +30,7 @@ public class Habitation{
     }
 
     public String toString(){
-        return "Adresse : " + this.adresse;
+        return this.getAdresse();
     }
 
 }

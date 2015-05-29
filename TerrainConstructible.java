@@ -122,7 +122,15 @@ public class TerrainConstructible extends Terrain{
 	
 	String s = new String();
 	for(int i=0; i<nbHabitations; i++){
-	    s+= "\n" + listeHabitations.get(i).toString();
+	    if(listeHabitations.get(i) instanceof Immeuble){
+		s+= "\nImmeuble\n" + listeHabitations.get(i).toString() + "\n";
+	    }else{
+		if(listeHabitations.get(i) instanceof Maison){
+		    s+= "\nMaison\n" + listeHabitations.get(i).toString() + "\n";
+		}else{
+		    s+="\nHabitation\n" + listeHabitations.get(i).toString() + "\n";
+		}
+	    }
 	}
 	return super.toString() + s;
     }// fin methode toString()
@@ -184,6 +192,7 @@ public class TerrainConstructible extends Terrain{
 			
 		    }
 		    if(st.countTokens() == 2){
+			st.nextToken();
 			String adresse = st.nextToken();
 			
 			try {
