@@ -36,6 +36,6 @@ public class Terrain {
 	}
 
 	public String toString(){
-		return "Nom du Terrain : " + nomTerrain + "de superficie : " + superficie;
+		return "Nom du Terrain : " + nomTerrain + " de superficie : " + superficie;
 	}
 }

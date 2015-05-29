@@ -1,5 +1,5 @@
-juju
-45.0
-Habitation;ht
-Maison;kiki 45;3;radiateur
-Immeuble;78;2;6
+t1
+12.0
+Habitation;h1
+Maison;m1;5;chaudiere
+Immeuble;i1;6;3

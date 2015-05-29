@@ -122,7 +122,7 @@ public class TerrainConstructible extends Terrain{
 	
 	String s = new String();
 	for(int i=0; i<nbHabitations; i++){
-	    s+= listeHabitations.get(i).toString() +"\n";
+	    s+= "\n" + listeHabitations.get(i).toString();
 	}
 	return super.toString() + s;
     }// fin methode toString()
