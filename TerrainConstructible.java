@@ -147,9 +147,10 @@ public class TerrainConstructible extends Terrain{
 		    StringTokenizer st = new StringTokenizer(ligne,";:");
 		    if(a==0 ){
 			this.setNomTerrain(ligne);
+			a++;
 		    }
 		    if(a==1 ){
-			this.setSuperficieTerrain(Float.parseFloat(ligne));
+			this.setSuperficieTerrain(Integer.parseInt(ligne));
 		    }
 		    
 		    if(st.countTokens()==4){
@@ -194,8 +195,8 @@ public class TerrainConstructible extends Terrain{
 			}
 			
 		    }
-		    a++;
-		    ligne = bln.readLine();
+		    
+		    bln.readLine();
 		    
 		}
 	    
@@ -234,7 +235,7 @@ public class TerrainConstructible extends Terrain{
 				pOut.println("Immeuble;"+imm.getAdresse()+";"+imm.getnbApps()+";"+imm.getnbEtages());
 			    }else{
 				Habitation h=this.listeHabitations.get(i);
-				pOut.println("Habitation;"+ h.getAdresse());
+				pOut.print("Habitation;"+ h.getAdresse());
 			    }
 			}
 		    }
